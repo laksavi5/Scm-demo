@@ -1,0 +1,21 @@
+pipeline{
+    agent any
+
+    stages{
+        stage("SCM"){
+            steps{
+                git branch: 'webhookdemo', url: 'https://github.com/laksavi5/Scm-demo.git'
+            }
+        }
+        stage("Build and Unit test"){
+            steps{
+                bat 'mvn clean package'
+            }
+        }
+        stage("Done"){
+            steps{
+                echo 'Pipline steps Completed'
+            }
+        }
+    }
+}
